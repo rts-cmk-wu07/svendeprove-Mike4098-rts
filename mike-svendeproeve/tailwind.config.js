@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx}"],
+  content: ["./src/**/*.{js,jsx}"],
   theme: {
     extend: {
       colors: {
@@ -13,6 +13,9 @@ module.exports = {
         sm: '18px',
         md: '24px',
         lg: '36px'
+      },
+      backgroundImage: {
+        'splash': "url('./assets/splash-image.jpg')"
       }
     },
    

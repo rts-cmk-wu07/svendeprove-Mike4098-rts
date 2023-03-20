@@ -66,7 +66,7 @@ et værktøj / hook der til formål arbejder med cookies.
 Jeg valgte det, da jeg har arbejdet med det før og gør det nemmere for mig at arbejde med cookies.
 
 
-# kode eksempel
+# kode eksempler
 
 ``` 
 export default function TokenProvider({ children }) {
@@ -92,3 +92,15 @@ dette stykke kode er et React komponent der laver et context objekt og en provid
 
 `tokencontext.Provider` returneres med en `value` prop og `setToken` funktion. Den her komponent wrapper alle child komponenter der skal bruge
 Token stadiet.  `children` proppet er passed som et `child` komponent til provideren, hvilke gør det muligt at bruge token til alle `child` komponenter der skal bruge det.
+
+## Her er et kode eksempel jeg vil forklare mere om til prøven
+
+```
+   const [searchQuery, setSearchQuery] = useState("");
+    
+      const filter = data?.filter((e) =>
+        e.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    
+      let results = searchQuery !== "" && filter?.length > 0;
+```

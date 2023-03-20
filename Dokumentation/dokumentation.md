@@ -67,3 +67,28 @@ Jeg valgte det, da jeg har arbejdet med det før og gør det nemmere for mig at 
 
 
 # kode eksempel
+
+``` 
+export default function TokenProvider({ children }) {
+	const [token, setToken] = useState(null)
+	
+	useEffect(function() {
+		if (!token) {
+			const tokenObject = getCookie("user-cookie")
+			if (tokenObject) {
+				setToken(JSON.parse(tokenObject))
+			}
+		}
+	}, [token])
+
+	return <TokenContext.Provider value={{token, setToken}}>
+		{children}
+	</TokenContext.Provider>
+}
+```
+dette stykke kode er et React komponent der laver et context objekt og en provider for at arbejde med token states. `tokenContext`  er lavet via `createContext` Api'et som passer tokens value og en funktion sætter tokens value til child komponenter der kan bruge det.
+
+`useEffect` hook'et tjekker om token value er `null` og hvis det er, tjekker den om der er en cookie med navnet `user-cookie` via `getCookie` funktionen fra `react-use-cookie`. hvis der så er en cookie bliver den taget og sat via `setToken` funktionen.
+
+`tokencontext.Provider` returneres med en `value` prop og `setToken` funktion. Den her komponent wrapper alle child komponenter der skal bruge
+Token stadiet.  `children` proppet er passed som et `child` komponent til provideren, hvilke gør det muligt at bruge token til alle `child` komponenter der skal bruge det.

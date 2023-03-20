@@ -3,7 +3,7 @@ import { FiSearch } from "react-icons/fi";
 import useAxios from '../hooks/UseAxios'
 import { useState } from "react";
 import ActivitiesList from "../components/activitiesList/ActivitiesList";
-
+import Loading from '../components/animations/Loading'
 const SearchPage = () => {
 
     const { data } = useAxios({
@@ -33,11 +33,15 @@ const SearchPage = () => {
         />
         <FiSearch size={24} className="text-grey absolute top-3 right-2 " />
         </form>
-        { !results || searchQuery.length === 0 ? (
+        { !results  ? (
         <div className="text-center">
        <p className="text-grey text-sm font-ubuntu">Der blev ikke fundet nogle resultater, prøv og søg efter noget andet.</p>
+       
         </div>
-      ) : null}
+      ) :null }
+      {!data ? (
+        <Loading />
+      ):null}
       {results &&  (
         <div className="flex flex-col w-[90%] mt-8 m-auto pb-24 gap-8 ">
           {filter.map((item) => {

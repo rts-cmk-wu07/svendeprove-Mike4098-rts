@@ -14,6 +14,11 @@ module.exports = {
         md: '24px',
         lg: '36px'
       },
+      fontFamily: {
+        ubuntu: ["Ubuntu", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
+        racing: ["Racing Sans One", "sans-serif"],
+      },
       backgroundImage: {
         'splash': "url('./assets/splash-image.jpg')"
       }
